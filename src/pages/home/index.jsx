@@ -1,19 +1,24 @@
 import React from "react";
 import data from "../../components/data1";
 import listdata from "../../data/data1";
-const Home = () => {
-    return (
-      <div>
-        <div style={{ marginBottom: "20px" }}>
-          <input type="text" placeholder="search" />
-          <button>Search</button>
-        </div>
-        {ListGif.filter((data) => data.rating === "g").map((gif) => (
-          <Gif key={gif.id} {...gif} />
-        ))}
+
+function Home() {
+  return (
+    <div className='home'>
+      <div className='albums'>
+        {data.map((item) => {
+          return (
+            <Playlist
+              key={item.id}
+              url={item.album.images[0].url}
+              title={item.name}
+              artist={item.artists[0].name}
+              album={item.album.name} />
+          )
+        })}
       </div>
-    );
-  };
-  
-  export default Home;
-  
+    </div>
+  );
+}
+
+export default Home
